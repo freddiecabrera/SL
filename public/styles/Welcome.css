@@ -1,0 +1,56 @@
+body {
+  color: black;
+  background-color: #EAF0FF;
+}
+
+h5 {
+  font-weight: 100;
+}
+
+.enter-button {
+  background-color: #3F7AFD;
+  margin-left: 7%;
+  
+}
+
+.enter-button:hover {
+  background-color: #2A66EB;
+}
+
+.logo-scale {
+  font-size: 25px;
+  font-weight: 500;
+  color: #3F7AFD;
+}
+
+.logo-lab {
+  color: #3F7AFD;
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.logo-container {
+  top: 1%;
+  left: 5%;
+  padding-top: 1%;
+  position: fixed;
+}
+
+.welcome-card {
+  margin-top: 16%;
+  height: 27em;
+  background-color: white;
+  border-radius: 3px;
+}
+
+.card-text {
+  font-weight: 600;
+  font-size: 2em;
+  margin-top: 40%;
+  margin-left: 7%;
+}
+
+.video-camera {
+  height: 11em;
+  margin-top: 3%;
+}
