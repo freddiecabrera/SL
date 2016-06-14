@@ -1,6 +1,6 @@
 body {
   color: black;
-  background-color: #EAF0FF;
+  background-color: #f2f2f4;
 }
 
 h5 {
@@ -10,7 +10,7 @@ h5 {
 .enter-button {
   background-color: #3F7AFD;
   margin-left: 7%;
-  
+
 }
 
 .enter-button:hover {
