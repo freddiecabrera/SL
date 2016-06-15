@@ -28318,10 +28318,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ProfileCard = __webpack_require__(286);
-
-	var _ProfileCard2 = _interopRequireDefault(_ProfileCard);
-
 	var _reactRedux = __webpack_require__(230);
 
 	var _actions = __webpack_require__(262);
@@ -28331,6 +28327,10 @@
 	var _Loader = __webpack_require__(282);
 
 	var _Loader2 = _interopRequireDefault(_Loader);
+
+	var _ProfileCard = __webpack_require__(288);
+
+	var _ProfileCard2 = _interopRequireDefault(_ProfileCard);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -28360,97 +28360,8 @@
 	      { className: 'container' },
 	      !data ? _react2.default.createElement(_Loader2.default, null) : _react2.default.createElement(
 	        'div',
-	        { className: 'row' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col s12 m12 l12' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'card-panel info-card' },
-	            _react2.default.createElement(
-	              'div',
-	              { style: { textAlign: 'center' } },
-	              _react2.default.createElement('img', { src: data.avatar, alt: 'avatar', className: 'circle card-avatar' }),
-	              _react2.default.createElement(
-	                'h5',
-	                { className: 'channel-name' },
-	                data.channelname
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                  'h5',
-	                  null,
-	                  data.subscribers,
-	                  ' ',
-	                  _react2.default.createElement(
-	                    'span',
-	                    null,
-	                    'Subs'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'h5',
-	                  null,
-	                  data.views,
-	                  ' ',
-	                  _react2.default.createElement(
-	                    'span',
-	                    null,
-	                    'Views'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'h5',
-	                  null,
-	                  data.video_count,
-	                  ' ',
-	                  _react2.default.createElement(
-	                    'span',
-	                    null,
-	                    'Videos'
-	                  )
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'h6',
-	              null,
-	              data.network
-	            ),
-	            _react2.default.createElement(
-	              'h6',
-	              null,
-	              data.joined
-	            ),
-	            _react2.default.createElement(
-	              'h6',
-	              null,
-	              data.owner
-	            ),
-	            _react2.default.createElement(
-	              'h6',
-	              null,
-	              data.commission
-	            ),
-	            _react2.default.createElement(
-	              'h6',
-	              null,
-	              data.category
-	            ),
-	            _react2.default.createElement(
-	              'h6',
-	              null,
-	              data.country
-	            ),
-	            _react2.default.createElement(
-	              'h6',
-	              null,
-	              data.channelid
-	            )
-	          )
-	        )
+	        null,
+	        _react2.default.createElement(_ProfileCard2.default, { data: data })
 	      )
 	    );
 	  }
@@ -29806,10 +29717,126 @@
 
 
 	// module
-	exports.push([module.id, "\n.card-avatar {\n}\n\n.info-card {\n  margin-top: 9%;\n}\n\n.channel-name {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n", ""]);
+	exports.push([module.id, "\n.card-avatar {\n}\n\n.info-card {\n  margin-top: 9%;\n  height: 23em;\n}\n\n.channel-name {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.creator-stats {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.linked-badge {\n  margin: 1em;\n  font-weight: 300;\n  font-size: 0.8rem;\n  color: #fff;\n  background-color: #69f0ae;\n  border: 6px solid #69f0ae;\n  border-radius: 2px;\n}\n\n.channel-id {\n  font-weight: 300;\n}\n\n.divider {\n  margin-bottom: 2%;\n}\n", ""]);
 
 	// exports
 
+
+/***/ },
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ProfileCard = __webpack_require__(286);
+
+	var _ProfileCard2 = _interopRequireDefault(_ProfileCard);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var object = _react2.default.PropTypes.object;
+
+
+	var nFormatter = function nFormatter(num) {
+	  if (num >= 1000000) {
+	    return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+	  }
+	  if (num >= 1000) {
+	    return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+	  }
+	  return num;
+	};
+
+	var ProfileCard = function ProfileCard(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'row' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'col s12 m12 l12' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'card-panel info-card' },
+	        _react2.default.createElement(
+	          'div',
+	          { style: { textAlign: 'center' } },
+	          _react2.default.createElement('img', { src: props.data.avatar, alt: 'avatar', className: 'circle card-avatar' }),
+	          _react2.default.createElement(
+	            'h5',
+	            { className: 'channel-name' },
+	            props.data.channelname
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              nFormatter(props.data.subscribers),
+	              ' ',
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'creator-stats' },
+	                'Subs'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              nFormatter(props.data.views),
+	              ' ',
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'creator-stats' },
+	                'Views'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              nFormatter(props.data.video_count),
+	              ' ',
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'creator-stats' },
+	                'Videos'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement('div', { className: 'divider' }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col s12' },
+	            _react2.default.createElement(
+	              'h6',
+	              { className: 'channel-id' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'linked-badge' },
+	                'Linked'
+	              ),
+	              props.data.channelid
+	            )
+	          )
+	        )
+	      )
+	    )
+	  );
+	};
+
+	ProfileCard.propTypes = {
+	  data: object.isRequired
+	};
+
+	exports.default = ProfileCard;
 
 /***/ }
 /******/ ]);
