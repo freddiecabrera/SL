@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from '../../public/styles/ProfileCard.css'
 const { object } = React.PropTypes
 
 const nFormatter = num => {
@@ -13,9 +12,8 @@ const nFormatter = num => {
 }
 
 const ProfileCard = props => (
-  <div className='row'>
-    <div className='col s12 m12 l12'>
-      <div className='card-panel info-card'>
+  <div className='row col l5 m12 s12'>
+      <div className='card-panel profile-card'>
         <div style={{textAlign: 'center'}}>
           <img src={props.data.avatar} alt='avatar' className='circle card-avatar' />
           <h5 className='channel-name'>{props.data.channelname}</h5>
@@ -25,12 +23,9 @@ const ProfileCard = props => (
             <h5>{nFormatter(props.data.video_count)} <span className='creator-stats'>Videos</span></h5>
           </div>
           <div className='divider'></div>
-          <div className='col s12'>
             <h6 className='channel-id'><span className='linked-badge'>Linked</span>{props.data.channelid}</h6>
-          </div>
         </div>
       </div>
-    </div>
   </div>
 )
 

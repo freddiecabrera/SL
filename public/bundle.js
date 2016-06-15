@@ -28332,6 +28332,14 @@
 
 	var _ProfileCard2 = _interopRequireDefault(_ProfileCard);
 
+	var _InfoCard = __webpack_require__(294);
+
+	var _InfoCard2 = _interopRequireDefault(_InfoCard);
+
+	var _Profile = __webpack_require__(292);
+
+	var _Profile2 = _interopRequireDefault(_Profile);
+
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -28360,8 +28368,9 @@
 	      { className: 'container' },
 	      !data ? _react2.default.createElement(_Loader2.default, null) : _react2.default.createElement(
 	        'div',
-	        null,
-	        _react2.default.createElement(_ProfileCard2.default, { data: data })
+	        { className: 'row col s12' },
+	        _react2.default.createElement(_ProfileCard2.default, { data: data }),
+	        _react2.default.createElement(_InfoCard2.default, { data: data })
 	      )
 	    );
 	  }
@@ -29683,46 +29692,8 @@
 	exports.default = UIReducer;
 
 /***/ },
-/* 286 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(287);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(260)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./ProfileCard.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./ProfileCard.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 287 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(259)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n.card-avatar {\n}\n\n.info-card {\n  margin-top: 9%;\n  height: 23em;\n}\n\n.channel-name {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.creator-stats {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.linked-badge {\n  margin: 1em;\n  font-weight: 300;\n  font-size: 0.8rem;\n  color: #fff;\n  background-color: #69f0ae;\n  border: 6px solid #69f0ae;\n  border-radius: 2px;\n}\n\n.channel-id {\n  font-weight: 300;\n}\n\n.divider {\n  margin-bottom: 2%;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
+/* 286 */,
+/* 287 */,
 /* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29735,10 +29706,6 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
-
-	var _ProfileCard = __webpack_require__(286);
-
-	var _ProfileCard2 = _interopRequireDefault(_ProfileCard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29758,74 +29725,66 @@
 	var ProfileCard = function ProfileCard(props) {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'row' },
+	    { className: 'row col l5 m12 s12' },
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'col s12 m12 l12' },
+	      { className: 'card-panel profile-card' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'card-panel info-card' },
+	        { style: { textAlign: 'center' } },
+	        _react2.default.createElement('img', { src: props.data.avatar, alt: 'avatar', className: 'circle card-avatar' }),
+	        _react2.default.createElement(
+	          'h5',
+	          { className: 'channel-name' },
+	          props.data.channelname
+	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { style: { textAlign: 'center' } },
-	          _react2.default.createElement('img', { src: props.data.avatar, alt: 'avatar', className: 'circle card-avatar' }),
+	          null,
 	          _react2.default.createElement(
 	            'h5',
-	            { className: 'channel-name' },
-	            props.data.channelname
-	          ),
-	          _react2.default.createElement(
-	            'div',
 	            null,
+	            nFormatter(props.data.subscribers),
+	            ' ',
 	            _react2.default.createElement(
-	              'h5',
-	              null,
-	              nFormatter(props.data.subscribers),
-	              ' ',
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'creator-stats' },
-	                'Subs'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'h5',
-	              null,
-	              nFormatter(props.data.views),
-	              ' ',
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'creator-stats' },
-	                'Views'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'h5',
-	              null,
-	              nFormatter(props.data.video_count),
-	              ' ',
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'creator-stats' },
-	                'Videos'
-	              )
+	              'span',
+	              { className: 'creator-stats' },
+	              'Subs'
 	            )
 	          ),
-	          _react2.default.createElement('div', { className: 'divider' }),
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'col s12' },
+	            'h5',
+	            null,
+	            nFormatter(props.data.views),
+	            ' ',
 	            _react2.default.createElement(
-	              'h6',
-	              { className: 'channel-id' },
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'linked-badge' },
-	                'Linked'
-	              ),
-	              props.data.channelid
+	              'span',
+	              { className: 'creator-stats' },
+	              'Views'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'h5',
+	            null,
+	            nFormatter(props.data.video_count),
+	            ' ',
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'creator-stats' },
+	              'Videos'
 	            )
 	          )
+	        ),
+	        _react2.default.createElement('div', { className: 'divider' }),
+	        _react2.default.createElement(
+	          'h6',
+	          { className: 'channel-id' },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'linked-badge' },
+	            'Linked'
+	          ),
+	          props.data.channelid
 	        )
 	      )
 	    )
@@ -29837,6 +29796,212 @@
 	};
 
 	exports.default = ProfileCard;
+
+/***/ },
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(293);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(260)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./Profile.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./Profile.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 293 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(259)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n.profile-card {\n  margin-top: 9%;\n  height: 23em;\n}\n\n.info-card {\n  margin-top: 2.6%;\n}\n\n.channel-name {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.creator-stats {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.linked-badge {\n  margin: 1em;\n  font-weight: 300;\n  font-size: 0.8rem;\n  color: #fff;\n  background-color: #69f0ae;\n  border: 6px solid #69f0ae;\n  border-radius: 2px;\n}\n\n.channel-id {\n  font-weight: 300;\n}\n\n.divider {\n  margin-bottom: 7%;\n}\n\n.info-title {\n  color: gray;\n  font-weight: 300;\n}\n\n.collection .collection-item.avatar {\n  min-height: 4em;\n}\n\n.collection .collection-item.avatar i.circle {\n    background-color: #3F7AFD;\n}\n\n.button-container {\n  text-align: center;\n}\n\n.button-container a {\n  margin-top: -11%;\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .divider {\n      margin-bottom: 2.3%;\n  }\n\n  .info-card {\n    margin-top: -4%;\n  }\n}\n@media only screen and (max-width: 400px) {\n  .divider {\n      margin-bottom: 5.4%;\n  }\n\n  .info-card {\n    margin-top: -4%;\n  }\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 294 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var object = _react2.default.PropTypes.object;
+
+
+	var InfoCard = function InfoCard(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'row col l7 m12 s12 info-card' },
+	    _react2.default.createElement(
+	      'ul',
+	      { className: 'collection z-depth-1' },
+	      _react2.default.createElement(
+	        'li',
+	        { className: 'collection-item avatar' },
+	        _react2.default.createElement(
+	          'i',
+	          { className: 'material-icons circle' },
+	          'network_check'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'title' },
+	          'Network:'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          props.data.network
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        { className: 'collection-item avatar' },
+	        _react2.default.createElement(
+	          'i',
+	          { className: 'material-icons circle' },
+	          'account_circle'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'title' },
+	          'Owner:'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          props.data.owner
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        { className: 'collection-item avatar' },
+	        _react2.default.createElement(
+	          'i',
+	          { className: 'material-icons circle' },
+	          'attach_money'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'title' },
+	          'Commission:'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          props.data.commission
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        { className: 'collection-item avatar' },
+	        _react2.default.createElement(
+	          'i',
+	          { className: 'material-icons circle' },
+	          'date_range'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'title' },
+	          'Joined:'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          props.data.joined
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        { className: 'collection-item avatar' },
+	        _react2.default.createElement(
+	          'i',
+	          { className: 'material-icons circle' },
+	          'storage'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'title' },
+	          'Category:'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          props.data.category
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        { className: 'collection-item avatar' },
+	        _react2.default.createElement(
+	          'i',
+	          { className: 'material-icons circle' },
+	          'location_on'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'title' },
+	          'Country:'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          props.data.country_id
+	        )
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'button-container' },
+	      _react2.default.createElement(
+	        'a',
+	        { className: 'btn-floating btn-large waves-effect waves-light blue accent-3' },
+	        _react2.default.createElement(
+	          'i',
+	          { className: 'material-icons' },
+	          'details'
+	        )
+	      )
+	    )
+	  );
+	};
+
+	InfoCard.propTypes = {
+	  data: object.isRequired
+	};
+
+	exports.default = InfoCard;
 
 /***/ }
 /******/ ]);

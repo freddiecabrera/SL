@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import * as actions from '../actions'
 import Loader from '../components/Loader'
 import ProfileCard from '../components/ProfileCard'
+import InfoCard from '../components/InfoCard'
+import styles from '../../public/styles/Profile.css'
 const { object, func, bool } = React.PropTypes
 
 const Profile = React.createClass({
@@ -19,7 +21,10 @@ const Profile = React.createClass({
     return (
       <div className='container'>
         {!data ? <Loader />
-          : <div><ProfileCard data={data} /></div>}
+          : <div className='row col s12'>
+            <ProfileCard data={data} />
+            <InfoCard data={data} />
+          </div>}
       </div>
     )
   }
