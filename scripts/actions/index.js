@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { FETCH_PROFILE, FETCHING } from './types'
+import { FETCH_PROFILE, FETCHING, SHOW_DETAILS } from './types'
 
 const PROFILE_URL = 'http://scalelab.com/test.json'
 
-export function getProfile () {
+export const getProfile = () => {
   return function (dispatch) {
     dispatch({ type: FETCHING, fetching: true })
     axios.get(PROFILE_URL)
@@ -17,3 +17,8 @@ export function getProfile () {
       })
   }
 }
+
+export const showDetails = bool => ({
+  type: SHOW_DETAILS,
+  show: bool
+})

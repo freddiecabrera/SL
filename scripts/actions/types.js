@@ -1,2 +1,3 @@
 export const FETCH_PROFILE = 'FETCH_PROFILE'
 export const FETCHING = 'FETCHING'
+export const SHOW_DETAILS = 'SHOW_DETAILS'

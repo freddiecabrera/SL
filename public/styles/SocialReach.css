@@ -1,0 +1,55 @@
+.social-card-container {
+  text-align: center;
+}
+
+.social-card-container img {
+  margin-top: 9%;
+  height: 2em;
+}
+
+.social-card-container h5 {
+  font-weight: 300;
+}
+
+.youtube-card {
+  background-color: #bb0000;
+  color: white;
+  height: 9em;
+  border: 2px solid #F2F2F4;
+}
+
+.facebook-card {
+  background-color: #3b5998;
+  color: white;
+  height: 9em;
+  border: 2px solid #F2F2F4;
+}
+
+.vine-card {
+  background-color: #00bf8f;
+  color: white;
+  height: 9em;
+  border: 2px solid #F2F2F4;
+}
+
+.instagram-card {
+  background-color: #125688;
+  color: white;
+  height: 9em;
+  border: 2px solid #F2F2F4;
+}
+
+.twitter-card {
+  background-color: #55acee;
+  color: white;
+  height: 9em;
+  border: 2px solid #F2F2F4;
+}
+
+
+
+@media only screen and (max-width: 400px) {
+  .social-card-container img {
+    margin-top: 25%;
+  }
+}

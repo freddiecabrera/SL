@@ -1,0 +1,36 @@
+@media only screen and (max-width: 400px) {
+  .info-card {
+    margin-top: -4%;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .info-card {
+    margin-top: -4%;
+  }
+}
+
+.info-card {
+  margin-top: 2.6%;
+}
+
+.info-title {
+  color: gray;
+  font-weight: 300;
+}
+
+.collection .collection-item.avatar {
+  min-height: 4em;
+}
+
+.collection .collection-item.avatar i.circle {
+    background-color: #3F7AFD;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.button-container a {
+  margin-top: -11%;
+}

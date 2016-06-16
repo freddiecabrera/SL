@@ -27843,6 +27843,7 @@
 	});
 	var FETCH_PROFILE = exports.FETCH_PROFILE = 'FETCH_PROFILE';
 	var FETCHING = exports.FETCHING = 'FETCHING';
+	var SHOW_DETAILS = exports.SHOW_DETAILS = 'SHOW_DETAILS';
 
 /***/ },
 /* 255 */
@@ -28336,9 +28337,9 @@
 
 	var _InfoCard2 = _interopRequireDefault(_InfoCard);
 
-	var _Profile = __webpack_require__(292);
+	var _SocialReach = __webpack_require__(295);
 
-	var _Profile2 = _interopRequireDefault(_Profile);
+	var _SocialReach2 = _interopRequireDefault(_SocialReach);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -28355,10 +28356,13 @@
 
 	  propTypes: {
 	    profile: object.isRequired,
-	    getProfile: func.isRequired
+	    getProfile: func.isRequired,
+	    showDetails: func.isRequired,
+	    details: bool.isRequired
 	  },
 	  componentWillMount: function componentWillMount() {
 	    this.props.getProfile();
+	    this.props.showDetails(false);
 	  },
 	  render: function render() {
 	    var data = this.props.profile;
@@ -28370,7 +28374,8 @@
 	        'div',
 	        { className: 'row col s12' },
 	        _react2.default.createElement(_ProfileCard2.default, { data: data }),
-	        _react2.default.createElement(_InfoCard2.default, { data: data })
+	        _react2.default.createElement(_InfoCard2.default, { details: this.props.details, showDetails: this.props.showDetails, data: data }),
+	        _react2.default.createElement(_SocialReach2.default, { social: data.social_reach })
 	      )
 	    );
 	  }
@@ -28378,7 +28383,8 @@
 
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
-	    profile: state.ProfileReducer.profile
+	    profile: state.ProfileReducer.profile,
+	    details: state.UIReducer.show
 	  };
 	};
 
@@ -28393,7 +28399,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.getProfile = getProfile;
+	exports.showDetails = exports.getProfile = undefined;
 
 	var _axios = __webpack_require__(263);
 
@@ -28405,7 +28411,7 @@
 
 	var PROFILE_URL = 'http://scalelab.com/test.json';
 
-	function getProfile() {
+	var getProfile = exports.getProfile = function getProfile() {
 	  return function (dispatch) {
 	    dispatch({ type: _types.FETCHING, fetching: true });
 	    _axios2.default.get(PROFILE_URL).then(function (response) {
@@ -28416,7 +28422,14 @@
 	      console.log(error);
 	    });
 	  };
-	}
+	};
+
+	var showDetails = exports.showDetails = function showDetails(bool) {
+	  return {
+	    type: _types.SHOW_DETAILS,
+	    show: bool
+	  };
+	};
 
 /***/ },
 /* 263 */
@@ -29684,6 +29697,8 @@
 	  switch (action.type) {
 	    case _types.FETCHING:
 	      return _extends({}, state, { fetching: action.fetching });
+	    case _types.SHOW_DETAILS:
+	      return _extends({}, state, { show: action.show });
 	    default:
 	      return state;
 	  }
@@ -29692,8 +29707,46 @@
 	exports.default = UIReducer;
 
 /***/ },
-/* 286 */,
-/* 287 */,
+/* 286 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(287);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(260)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./ProfileCard.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./ProfileCard.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 287 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(259)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n.profile-card {\n  margin-top: 9%;\n  height: 23em;\n}\n\n.info-card {\n  margin-top: 2.6%;\n}\n\n.channel-name {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.creator-stats {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.linked-badge {\n  margin: 1em;\n  font-weight: 300;\n  font-size: 0.8rem;\n  color: #fff;\n  background-color: #69f0ae;\n  border: 6px solid #69f0ae;\n  border-radius: 2px;\n}\n\n.channel-id {\n  font-weight: 300;\n}\n\n.divider {\n  margin-bottom: 7%;\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .divider {\n      margin-bottom: 2.3%;\n  }\n}\n\n@media only screen and (max-width: 400px) {\n  .divider {\n      margin-bottom: 5.4%;\n  }\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
 /* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29706,6 +29759,10 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _ProfileCard = __webpack_require__(286);
+
+	var _ProfileCard2 = _interopRequireDefault(_ProfileCard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29799,15 +29856,13 @@
 
 /***/ },
 /* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(293);
+	var content = __webpack_require__(291);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(260)(content, {});
@@ -29816,8 +29871,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./Profile.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./Profile.css");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./InfoCard.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./InfoCard.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -29827,7 +29882,7 @@
 	}
 
 /***/ },
-/* 293 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(259)();
@@ -29835,12 +29890,14 @@
 
 
 	// module
-	exports.push([module.id, "\n.profile-card {\n  margin-top: 9%;\n  height: 23em;\n}\n\n.info-card {\n  margin-top: 2.6%;\n}\n\n.channel-name {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.creator-stats {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.linked-badge {\n  margin: 1em;\n  font-weight: 300;\n  font-size: 0.8rem;\n  color: #fff;\n  background-color: #69f0ae;\n  border: 6px solid #69f0ae;\n  border-radius: 2px;\n}\n\n.channel-id {\n  font-weight: 300;\n}\n\n.divider {\n  margin-bottom: 7%;\n}\n\n.info-title {\n  color: gray;\n  font-weight: 300;\n}\n\n.collection .collection-item.avatar {\n  min-height: 4em;\n}\n\n.collection .collection-item.avatar i.circle {\n    background-color: #3F7AFD;\n}\n\n.button-container {\n  text-align: center;\n}\n\n.button-container a {\n  margin-top: -11%;\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .divider {\n      margin-bottom: 2.3%;\n  }\n\n  .info-card {\n    margin-top: -4%;\n  }\n}\n@media only screen and (max-width: 400px) {\n  .divider {\n      margin-bottom: 5.4%;\n  }\n\n  .info-card {\n    margin-top: -4%;\n  }\n}\n", ""]);
+	exports.push([module.id, "@media only screen and (max-width: 400px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n.info-card {\n  margin-top: 2.6%;\n}\n\n.info-title {\n  color: gray;\n  font-weight: 300;\n}\n\n.collection .collection-item.avatar {\n  min-height: 4em;\n}\n\n.collection .collection-item.avatar i.circle {\n    background-color: #3F7AFD;\n}\n\n.button-container {\n  text-align: center;\n}\n\n.button-container a {\n  margin-top: -11%;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
+/* 292 */,
+/* 293 */,
 /* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29854,9 +29911,16 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _InfoCard = __webpack_require__(290);
+
+	var _InfoCard2 = _interopRequireDefault(_InfoCard);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var object = _react2.default.PropTypes.object;
+	var _React$PropTypes = _react2.default.PropTypes;
+	var object = _React$PropTypes.object;
+	var func = _React$PropTypes.func;
+	var bool = _React$PropTypes.bool;
 
 
 	var InfoCard = function InfoCard(props) {
@@ -29986,7 +30050,7 @@
 	      { className: 'button-container' },
 	      _react2.default.createElement(
 	        'a',
-	        { className: 'btn-floating btn-large waves-effect waves-light blue accent-3' },
+	        { className: 'btn-floating btn-large waves-effect waves-light blue accent-3', onClick: props.showDetails.bind(null, !props.details) },
 	        _react2.default.createElement(
 	          'i',
 	          { className: 'material-icons' },
@@ -29998,10 +30062,172 @@
 	};
 
 	InfoCard.propTypes = {
-	  data: object.isRequired
+	  data: object.isRequired,
+	  showDetails: func.isRequired,
+	  details: bool.isRequired
 	};
 
 	exports.default = InfoCard;
+
+/***/ },
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _SocialReach = __webpack_require__(296);
+
+	var _SocialReach2 = _interopRequireDefault(_SocialReach);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var object = _react2.default.PropTypes.object;
+
+
+	var nFormatter = function nFormatter(num) {
+	  if (num >= 1000000) {
+	    return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+	  }
+	  if (num >= 1000) {
+	    return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+	  }
+	  return num;
+	};
+
+	var SocialReach = function SocialReach(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'row' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'col s12 social-card-container' },
+	      _react2.default.createElement(
+	        'a',
+	        { href: props.social.youtube ? props.social.youtube.url : null, target: 'blank' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'youtube-card col s4 m4 l3 waves-effect waves-light' },
+	          _react2.default.createElement('img', { src: 'public/social-media-icons/youtube-logo.svg', alt: 'youtube icon' }),
+	          _react2.default.createElement(
+	            'h5',
+	            null,
+	            props.social.youtube ? nFormatter(props.social.youtube.number) : 0
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'a',
+	        { href: props.social.facenook ? props.social.facenook.url : null, target: 'blank' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'facebook-card col s4 m4 l3 waves-effect waves-light' },
+	          _react2.default.createElement('img', { src: 'public/social-media-icons/facebook-letter-logo.svg', alt: 'facebook icon' }),
+	          _react2.default.createElement(
+	            'h5',
+	            null,
+	            props.social.facenook ? nFormatter(props.social.facenook.number) : 0
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'a',
+	        { href: props.social.vine ? props.social.vine.url : null, target: 'blank' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'vine-card col s4 m4 l3 waves-effect waves-light' },
+	          _react2.default.createElement('img', { src: 'public/social-media-icons/vine-logo.svg', alt: 'vine icon' }),
+	          _react2.default.createElement(
+	            'h5',
+	            null,
+	            props.social.vine ? nFormatter(props.social.vine.number) : 0
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'a',
+	        { href: props.social.instagram ? props.social.instagram.url : null, target: 'blank' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'instagram-card col s4 m4 l3 waves-effect waves-light' },
+	          _react2.default.createElement('img', { src: 'public/social-media-icons/instagram-social-network-logo-of-photo-camera.svg', alt: 'instagram icon' }),
+	          _react2.default.createElement(
+	            'h5',
+	            null,
+	            props.social.instagram ? nFormatter(props.social.instagram.number) : 0
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'a',
+	        { href: props.social.twitter ? props.social.twitter.url : null, target: 'blank' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'twitter-card col s4 m4 l3 waves-effect waves-light' },
+	          _react2.default.createElement('img', { src: 'public/social-media-icons/twitter-logo.svg', alt: 'twitter icon' }),
+	          _react2.default.createElement(
+	            'h5',
+	            null,
+	            props.social.twitter ? nFormatter(props.social.twitter.number) : 0
+	          )
+	        )
+	      )
+	    )
+	  );
+	};
+
+	SocialReach.propTypes = {
+	  social: object.isRequired
+	};
+
+	exports.default = SocialReach;
+
+/***/ },
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(297);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(260)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./SocialReach.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./SocialReach.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(259)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".social-card-container {\n  text-align: center;\n}\n\n.social-card-container img {\n  margin-top: 9%;\n  height: 2em;\n}\n\n.social-card-container h5 {\n  font-weight: 300;\n}\n\n.youtube-card {\n  background-color: #bb0000;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.facebook-card {\n  background-color: #3b5998;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.vine-card {\n  background-color: #00bf8f;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.instagram-card {\n  background-color: #125688;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.twitter-card {\n  background-color: #55acee;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n\n\n@media only screen and (max-width: 400px) {\n  .social-card-container img {\n    margin-top: 25%;\n  }\n}\n", ""]);
+
+	// exports
+
 
 /***/ }
 /******/ ]);

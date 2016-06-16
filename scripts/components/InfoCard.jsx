@@ -1,5 +1,6 @@
 import React from 'react'
-const { object } = React.PropTypes
+import styles from '../../public/styles/InfoCard.css'
+const { object, func, bool } = React.PropTypes
 
 const InfoCard = props => (
   <div className='row col l7 m12 s12 info-card'>
@@ -36,13 +37,17 @@ const InfoCard = props => (
       </li>
     </ul>
     <div className='button-container'>
-      <a className="btn-floating btn-large waves-effect waves-light blue accent-3"><i className="material-icons">details</i></a>
+      <a className="btn-floating btn-large waves-effect waves-light blue accent-3" onClick={props.showDetails.bind(null, !props.details)}>
+        <i className="material-icons">details</i>
+      </a>
     </div>
   </div>
 )
 
 InfoCard.propTypes = {
-  data: object.isRequired
+  data: object.isRequired,
+  showDetails: func.isRequired,
+  details: bool.isRequired
 }
 
 export default InfoCard
