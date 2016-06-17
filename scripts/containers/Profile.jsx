@@ -6,7 +6,7 @@ import ProfileCard from '../components/ProfileCard'
 import InfoCard from '../components/InfoCard'
 import SocialReach from '../components/SocialReach'
 import Modal from '../components/Modal'
-const { object, func, bool } = React.PropTypes
+const { object, func, bool, string } = React.PropTypes
 import Chart from 'chart.js'
 import styles from '../../public/styles/Profile.css'
 
@@ -42,7 +42,13 @@ const Profile = React.createClass({
     profile: object.isRequired,
     getProfile: func.isRequired,
     showDetails: func.isRequired,
-    details: bool.isRequired
+    details: bool.isRequired,
+    month: string.isRequired,
+    modalTrigger: func.isRequired,
+    changeMonth: func.isRequired,
+    modalOn: func.isRequired,
+    updateSocial: func.isRequired
+
   },
   componentWillMount () {
     this.props.getProfile()
@@ -64,17 +70,8 @@ const Profile = React.createClass({
     profile ? createChart(this.refs.gender, Object.keys(profile.gender), 'Genders', objToArray(profile.gender), ['green', 'red']) : null
     data ? createChart(this.refs.earnings, data.map(item => item.month), 'Earnings', data.map(item => item.earnings), data.map(item => 'blue')) : null
   },
-  getInitialState:function(){
-    return {selectValue:'Radish'};
- },
- handleChange:function(e){
-
-   this.setState({selectValue:e.target.value})
-   console.log(this.state.selectValue)
-  },
   render () {
     const data = this.props.profile
-    console.log(this.props)
     return (
       <div className='container'>
         {!data ? <Loader />
@@ -108,8 +105,8 @@ const Profile = React.createClass({
               </div>
             </div>
           </div> : null}
-          {this.props.modalOn ? <Modal data={data} modalTrigger={this.props.modalTrigger}  /> : null}
-        </div>}
+          {this.props.modalOn ? <Modal updateSocial={this.props.updateSocial} data={data} modalTrigger={this.props.modalTrigger}  /> : null}
+         </div>}
       </div>
     )
   }

@@ -27852,6 +27852,7 @@
 	var SHOW_DETAILS = exports.SHOW_DETAILS = 'SHOW_DETAILS';
 	var GET_MONTHS = exports.GET_MONTHS = 'GET_MONTHS';
 	var MODAL_TRIGGER = exports.MODAL_TRIGGER = 'MODAL_TRIGGER';
+	var UPDATE_SOCIAL = exports.UPDATE_SOCIAL = 'UPDATE_SOCIAL';
 
 /***/ },
 /* 255 */
@@ -28405,6 +28406,7 @@
 	var object = _React$PropTypes.object;
 	var func = _React$PropTypes.func;
 	var bool = _React$PropTypes.bool;
+	var string = _React$PropTypes.string;
 
 
 	var createChart = function createChart(chart, labels, label, data, color) {
@@ -28441,7 +28443,13 @@
 	    profile: object.isRequired,
 	    getProfile: func.isRequired,
 	    showDetails: func.isRequired,
-	    details: bool.isRequired
+	    details: bool.isRequired,
+	    month: string.isRequired,
+	    modalTrigger: func.isRequired,
+	    changeMonth: func.isRequired,
+	    modalOn: func.isRequired,
+	    updateSocial: func.isRequired
+
 	  },
 	  componentWillMount: function componentWillMount() {
 	    this.props.getProfile();
@@ -28472,18 +28480,8 @@
 	      return 'blue';
 	    })) : null;
 	  },
-
-	  getInitialState: function getInitialState() {
-	    return { selectValue: 'Radish' };
-	  },
-	  handleChange: function handleChange(e) {
-
-	    this.setState({ selectValue: e.target.value });
-	    console.log(this.state.selectValue);
-	  },
 	  render: function render() {
 	    var data = this.props.profile;
-	    console.log(this.props);
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'container' },
@@ -28554,7 +28552,7 @@
 	            )
 	          )
 	        ) : null,
-	        this.props.modalOn ? _react2.default.createElement(_Modal2.default, { data: data, modalTrigger: this.props.modalTrigger }) : null
+	        this.props.modalOn ? _react2.default.createElement(_Modal2.default, { updateSocial: this.props.updateSocial, data: data, modalTrigger: this.props.modalTrigger }) : null
 	      )
 	    );
 	  }
@@ -28580,7 +28578,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.modalTrigger = exports.changeMonth = exports.showDetails = exports.getProfile = undefined;
+	exports.updateSocial = exports.modalTrigger = exports.changeMonth = exports.showDetails = exports.getProfile = undefined;
 
 	var _axios = __webpack_require__(264);
 
@@ -28623,6 +28621,16 @@
 	  return {
 	    type: _types.MODAL_TRIGGER,
 	    modalOn: bool
+	  };
+	};
+
+	var updateSocial = exports.updateSocial = function updateSocial(data) {
+	  return function (dispatch) {
+	    _axios2.default.post(PROFILE_URL, data).then(function (respone) {
+	      console.log(response);
+	    }).catch(function (error) {
+	      console.log(error);
+	    });
 	  };
 	};
 
@@ -30416,73 +30424,89 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Modal = function Modal(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'row' },
-	    _react2.default.createElement(
+	var _React$PropTypes = _react2.default.PropTypes;
+	var func = _React$PropTypes.func;
+	var bool = _React$PropTypes.bool;
+	var object = _React$PropTypes.object;
+
+
+	var Modal = _react2.default.createClass({
+	  displayName: 'Modal',
+
+	  propTypes: {
+	    social_reach: object.isRequired,
+	    data: object.isRequired,
+	    modalTrigger: func.isRequired
+	  },
+	  render: function render() {
+	    console.log('from the modal', this.refs);
+	    return _react2.default.createElement(
 	      'div',
-	      { className: 'col s8 m5 l8' },
+	      { className: 'row' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'card-panel modal' },
+	        { className: 'col s8 m5 l8' },
 	        _react2.default.createElement(
 	          'div',
-	          { style: { textAlign: 'center' } },
-	          _react2.default.createElement(
-	            'h5',
-	            { className: 'social-reach' },
-	            'Social Reach'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'h6',
-	            { className: 'social-title' },
-	            'YouTube'
-	          ),
+	          { className: 'card-panel modal' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'input-field col s8 push-s2 pull-s2' },
-	            _react2.default.createElement('input', { value: props.data.social_reach.youtube.url, id: 'Link', type: 'text', className: 'validate' }),
+	            { style: { textAlign: 'center' } },
 	            _react2.default.createElement(
-	              'label',
-	              { className: 'active', htmlFor: 'link' },
-	              'Link'
+	              'h5',
+	              { className: 'social-reach' },
+	              'Social Reach'
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'input-field col s8 push-s2 pull-s2' },
-	            _react2.default.createElement('input', { value: props.data.social_reach.youtube.number, id: 'followers', type: 'text', className: 'validate' }),
+	            { className: 'row' },
 	            _react2.default.createElement(
-	              'label',
-	              { className: 'active', htmlFor: 'followers' },
-	              ' Followers'
+	              'h6',
+	              { className: 'social-title' },
+	              'YouTube'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'input-field col s8 push-s2 pull-s2' },
+	              _react2.default.createElement('input', { ref: 'youtubeUrl', value: this.props.data.social_reach.youtube.url, id: 'Link', type: 'text', className: 'validate' }),
+	              _react2.default.createElement(
+	                'label',
+	                { className: 'active', htmlFor: 'link' },
+	                'Link'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'input-field col s8 push-s2 pull-s2' },
+	              _react2.default.createElement('input', { ref: 'youtubeFollowers', value: this.props.data.social_reach.youtube.number, id: 'followers', type: 'text', className: 'validate' }),
+	              _react2.default.createElement(
+	                'label',
+	                { className: 'active', htmlFor: 'followers' },
+	                ' Followers'
+	              )
 	            )
-	          )
-	        ),
-	        _react2.default.createElement('div', { className: 'divider' }),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'buttons-container' },
-	          _react2.default.createElement(
-	            'span',
-	            { onClick: props.modalTrigger.bind(null, false), className: 'btn waves-effect waves-light red cancel-button' },
-	            'cancel'
 	          ),
+	          _react2.default.createElement('div', { className: 'divider' }),
 	          _react2.default.createElement(
-	            'span',
-	            { className: 'btn waves-effect waves-light blue accent-3' },
-	            'submit'
+	            'div',
+	            { className: 'buttons-container' },
+	            _react2.default.createElement(
+	              'span',
+	              { onClick: this.props.modalTrigger.bind(null, false), className: 'btn waves-effect waves-light red cancel-button' },
+	              'cancel'
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'btn waves-effect waves-light blue accent-3' },
+	              'submit'
+	            )
 	          )
 	        )
 	      )
-	    )
-	  );
-	};
+	    );
+	  }
+	});
 
 	exports.default = Modal;
 

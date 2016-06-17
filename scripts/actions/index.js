@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { FETCH_PROFILE, FETCHING, SHOW_DETAILS, GET_MONTHS, MODAL_TRIGGER } from './types'
+import { FETCH_PROFILE, FETCHING, SHOW_DETAILS, GET_MONTHS, MODAL_TRIGGER, UPDATE_SOCIAL } from './types'
 
 const PROFILE_URL = 'http://scalelab.com/test.json'
 
@@ -12,7 +12,7 @@ export const getProfile = () => {
         dispatch({ type: FETCHING, fetching: false })
         return dispatch({ type: FETCH_PROFILE, profile: data })
       })
-      .catch(function (error) {
+      .catch(error => {
         console.log(error)
       })
   }
@@ -32,3 +32,15 @@ export const modalTrigger = (bool) => ({
   type: MODAL_TRIGGER,
   modalOn: bool
 })
+
+export const updateSocial = (data) => {
+  return function (dispatch) {
+    axios.post(PROFILE_URL, data)
+      .then(respone => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+}
