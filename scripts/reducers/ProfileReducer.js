@@ -1,9 +1,15 @@
-import { FETCH_PROFILE } from '../actions/types'
+import { FETCH_PROFILE, GET_MONTHS } from '../actions/types'
 
-const ProfileReducer = (state = {}, action) => {
+const initialState = {
+  month: 9
+}
+
+const ProfileReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PROFILE:
       return { ...state, profile: action.profile }
+    case GET_MONTHS:
+      return { ...state, month: action.month }
     default:
       return state
   }

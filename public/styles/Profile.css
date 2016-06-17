@@ -1,0 +1,20 @@
+.graph-chips {
+  font-weight: 300;
+  border-radius: 2em;
+  margin-right: 1em;
+  font-size: 10px;
+}
+
+.title-container {
+  text-align: center;
+}
+
+.title-container h6 {
+  text-align: center;
+}
+
+@media only screen and (max-width: 441px) {
+  .graph-chips:nth-child(4) {
+    margin-top: 5px;
+  }
+}

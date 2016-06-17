@@ -1,11 +1,17 @@
-import { FETCHING, SHOW_DETAILS } from '../actions/types'
+import { FETCHING, SHOW_DETAILS, MODAL_TRIGGER } from '../actions/types'
 
-const UIReducer = (state = {}, action) => {
+const initialState = {
+  modalOn: false
+}
+
+const UIReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING:
       return { ...state, fetching: action.fetching }
     case SHOW_DETAILS:
       return { ...state, show: action.show }
+    case MODAL_TRIGGER:
+      return { ...state, modalOn: action.modalOn }
     default:
       return state
   }

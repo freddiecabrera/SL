@@ -14,6 +14,7 @@ const nFormatter = num => {
 
 const SocialReach = props => (
   <div className='row'>
+    <button onClick={props.modalTrigger.bind(null, true)} className='btn waves-effect waves-light edit-button yellow darken-3'>Edit</button>
     <div className='col s12 social-card-container'>
       <a href={props.social.youtube ? props.social.youtube.url : null} target='blank'>
         <div className='youtube-card col s4 m4 l3 waves-effect waves-light'>

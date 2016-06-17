@@ -46,10 +46,17 @@
   border: 2px solid #F2F2F4;
 }
 
+.edit-button {
+  margin-left: 1.4%;
+}
 
 
 @media only screen and (max-width: 400px) {
   .social-card-container img {
     margin-top: 25%;
+  }
+
+  .edit-button {
+    margin-left: 3.4%;
   }
 }

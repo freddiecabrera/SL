@@ -1,0 +1,33 @@
+.cancel-button {
+  margin-right: 5px;
+}
+
+.social-reach {
+  margin-top: 3em;
+}
+
+.social-title {
+  margin-top: 3em;
+}
+
+.divider {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.buttons-container {
+  margin-bottom: 8%;
+}
+
+.modal {
+  height: 20em;
+  text-align: center;
+  z-index: 1000;
+  position: fixed;
+  display: inline-block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
