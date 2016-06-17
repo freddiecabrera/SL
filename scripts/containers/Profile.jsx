@@ -82,10 +82,10 @@ const Profile = React.createClass({
           <div className='row col s12'>
             <ProfileCard data={data} />
             <InfoCard details={this.props.details} showDetails={this.props.showDetails} data={data} />
-            <SocialReach modalTrigger={this.props.modalTrigger} social={data.social_reach} />
+            {this.props.details ? <SocialReach modalTrigger={this.props.modalTrigger} social={data.social_reach} /> : null}
           </div>
 
-          <div className='col s12 row'>
+          {this.props.details ? <div className='col s12 row'>
             <div className='col s12 m12 l6'>
               <div className='card-panel'>
                 <canvas ref={'age_groups'} height='400' width='400'></canvas>
@@ -107,7 +107,7 @@ const Profile = React.createClass({
                 <canvas ref={'earnings'} height='400' width='400'></canvas>
               </div>
             </div>
-          </div>
+          </div> : null}
           {this.props.modalOn ? <Modal data={data} modalTrigger={this.props.modalTrigger}  /> : null}
         </div>}
       </div>
