@@ -28588,7 +28588,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var PROFILE_URL = 'http://scalelab.com/test.json';
+	var PROFILE_URL = 'http://www.scalelab.com/test/channel.json';
 
 	var getProfile = exports.getProfile = function getProfile() {
 	  return function (dispatch) {
