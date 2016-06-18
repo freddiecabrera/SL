@@ -28480,7 +28480,13 @@
 	      return 'blue';
 	    })) : null;
 	  },
+	  log: function log(yee) {
+	    console.log(yee);
+	  },
 	  render: function render() {
+	    var _this = this;
+
+	    console.log('from the Profile', this);
 	    var data = this.props.profile;
 	    return _react2.default.createElement(
 	      'div',
@@ -28490,69 +28496,95 @@
 	        null,
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'row col s12' },
-	          _react2.default.createElement(_ProfileCard2.default, { data: data }),
-	          _react2.default.createElement(_InfoCard2.default, { details: this.props.details, showDetails: this.props.showDetails, data: data }),
-	          this.props.details ? _react2.default.createElement(_SocialReach2.default, { modalTrigger: this.props.modalTrigger, social: data.social_reach }) : null
+	          { className: 'col-xs-12' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(_ProfileCard2.default, { data: data }),
+	            _react2.default.createElement(_InfoCard2.default, { details: this.props.details, showDetails: this.props.showDetails, data: data }),
+	            this.props.details ? _react2.default.createElement(_SocialReach2.default, { modalTrigger: this.props.modalTrigger, social: data.social_reach }) : null
+	          )
 	        ),
 	        this.props.details ? _react2.default.createElement(
 	          'div',
-	          { className: 'col s12 row' },
+	          { className: 'col-xs12 row' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col s12 m12 l6' },
+	            { className: 'col-xs-12 col-md-12 col-lg-6' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'card-panel' },
-	              _react2.default.createElement('canvas', { ref: 'age_groups', height: '400', width: '400' })
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col s12 m12 l6' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'card-panel' },
-	              _react2.default.createElement('canvas', { ref: 'gender', height: '400', width: '400' })
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col s12' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'card-panel' },
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'btn graph-chips waves-effect waves-light blue accent-3', onClick: this.props.changeMonth.bind(null, 3) },
-	                '3 months'
-	              ),
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'btn graph-chips waves-effect waves-light blue accent-3', onClick: this.props.changeMonth.bind(null, 6) },
-	                '6 months'
-	              ),
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'btn graph-chips waves-effect waves-light blue accent-3', onClick: this.props.changeMonth.bind(null, 9) },
-	                '9 months'
-	              ),
+	              { className: 'panel panel-default' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'title-container' },
+	                { className: 'panel-body' },
+	                _react2.default.createElement('canvas', { ref: 'age_groups', height: '400', width: '400' })
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12 col-md-12 col-lg-6' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'panel panel-default' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'panel-body' },
+	                _react2.default.createElement('canvas', { ref: 'gender', height: '400', width: '400' })
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'panel panel-default' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'panel-body' },
 	                _react2.default.createElement(
-	                  'h5',
-	                  null,
-	                  'Earning\'s in the last ',
-	                  this.props.month,
-	                  ' months'
-	                )
-	              ),
-	              _react2.default.createElement('canvas', { ref: 'earnings', height: '400', width: '400' })
+	                  'div',
+	                  { className: 'title-container' },
+	                  _react2.default.createElement(
+	                    'h5',
+	                    null,
+	                    'Earning\'s in the last ',
+	                    this.props.month,
+	                    ' months'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'btn-group' },
+	                  _react2.default.createElement(
+	                    'button',
+	                    { type: 'button', className: 'btn btn-default dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+	                    'Months ',
+	                    _react2.default.createElement('span', { className: 'caret' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'ul',
+	                    { className: 'dropdown-menu' },
+	                    data.earnings.map(function (item, index) {
+	                      return _react2.default.createElement(
+	                        'li',
+	                        { onClick: _this.log.bind(null, index), key: index },
+	                        _react2.default.createElement(
+	                          'a',
+	                          null,
+	                          index
+	                        )
+	                      );
+	                    })
+	                  )
+	                ),
+	                _react2.default.createElement('canvas', { ref: 'earnings', height: '400', width: '400' })
+	              )
 	            )
 	          )
 	        ) : null,
-	        this.props.modalOn ? _react2.default.createElement(_Modal2.default, { updateSocial: this.props.updateSocial, data: data, modalTrigger: this.props.modalTrigger }) : null
+	        this.props.modalOn ? _react2.default.createElement(_Modal2.default, { ref: 'modal', updateSocial: this.props.updateSocial, data: data, modalTrigger: this.props.modalTrigger }) : null
 	      )
 	    );
 	  }
@@ -29915,13 +29947,13 @@
 	var ProfileCard = function ProfileCard(props) {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'row col l5 m12 s12' },
+	    { className: 'col-xs-12 col-md-12 col-lg-5' },
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'card-panel profile-card' },
+	      { className: 'panel panel-default profile-card' },
 	      _react2.default.createElement(
 	        'div',
-	        { style: { textAlign: 'center' } },
+	        { style: { textAlign: 'center' }, className: 'panel-body' },
 	        _react2.default.createElement('img', { src: props.data.avatar, alt: 'avatar', className: 'circle card-avatar' }),
 	        _react2.default.createElement(
 	          'h5',
@@ -29965,7 +29997,7 @@
 	            )
 	          )
 	        ),
-	        _react2.default.createElement('div', { className: 'divider' }),
+	        _react2.default.createElement('div', { role: 'separator', className: 'divider' }),
 	        _react2.default.createElement(
 	          'h6',
 	          { className: 'channel-id' },
@@ -30056,135 +30088,135 @@
 	var InfoCard = function InfoCard(props) {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'row col l7 m12 s12 info-card' },
-	    _react2.default.createElement(
-	      'ul',
-	      { className: 'collection z-depth-1' },
-	      _react2.default.createElement(
-	        'li',
-	        { className: 'collection-item avatar' },
-	        _react2.default.createElement(
-	          'i',
-	          { className: 'material-icons circle' },
-	          'network_check'
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'title' },
-	          'Network:'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          props.data.network
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        { className: 'collection-item avatar' },
-	        _react2.default.createElement(
-	          'i',
-	          { className: 'material-icons circle' },
-	          'account_circle'
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'title' },
-	          'Owner:'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          props.data.owner
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        { className: 'collection-item avatar' },
-	        _react2.default.createElement(
-	          'i',
-	          { className: 'material-icons circle' },
-	          'attach_money'
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'title' },
-	          'Commission:'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          props.data.commission
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        { className: 'collection-item avatar' },
-	        _react2.default.createElement(
-	          'i',
-	          { className: 'material-icons circle' },
-	          'date_range'
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'title' },
-	          'Joined:'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          props.data.joined
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        { className: 'collection-item avatar' },
-	        _react2.default.createElement(
-	          'i',
-	          { className: 'material-icons circle' },
-	          'storage'
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'title' },
-	          'Category:'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          props.data.category
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        { className: 'collection-item avatar' },
-	        _react2.default.createElement(
-	          'i',
-	          { className: 'material-icons circle' },
-	          'location_on'
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'title' },
-	          'Country:'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          props.data.country_id
-	        )
-	      )
-	    ),
+	    { className: 'col-lg-7 col-md-12 col-xs-12 panel panel-default info-card' },
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'button-container' },
+	      { className: 'panel-body' },
 	      _react2.default.createElement(
-	        'a',
-	        { className: 'btn-floating btn-large waves-effect waves-light blue accent-3', onClick: props.showDetails.bind(null, !props.details) },
+	        'ul',
+	        { className: 'list-group' },
 	        _react2.default.createElement(
-	          'i',
-	          { className: 'material-icons' },
-	          'details'
+	          'li',
+	          { className: 'list-group-item avatar' },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons circle' },
+	            'network_check'
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'title' },
+	            'Network:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            props.data.network
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          { className: 'list-group-item avatar' },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons circle' },
+	            'account_circle'
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'title' },
+	            'Owner:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            props.data.owner
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          { className: 'list-group-item avatar' },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons circle' },
+	            'attach_money'
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'title' },
+	            'Commission:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            props.data.commission
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          { className: 'list-group-item avatar' },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons circle' },
+	            'date_range'
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'title' },
+	            'Joined:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            props.data.joined
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          { className: 'list-group-item avatar' },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons circle' },
+	            'storage'
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'title' },
+	            'Category:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            props.data.category
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          { className: 'list-group-item avatar' },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons circle' },
+	            'location_on'
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'title' },
+	            'Country:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            props.data.country_id
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'button-container' },
+	        _react2.default.createElement(
+	          'a',
+	          { onClick: props.showDetails.bind(null, !props.details) },
+	          'Details'
 	        )
 	      )
 	    )
@@ -30234,7 +30266,7 @@
 
 
 	// module
-	exports.push([module.id, "@media only screen and (max-width: 400px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n.info-card {\n  margin-top: 2.6%;\n}\n\n.info-title {\n  color: gray;\n  font-weight: 300;\n}\n\n.collection .collection-item.avatar {\n  min-height: 4em;\n}\n\n.collection .collection-item.avatar i.circle {\n    background-color: #3F7AFD;\n}\n\n.button-container {\n  text-align: center;\n}\n\n.button-container a {\n  margin-top: -11%;\n}\n", ""]);
+	exports.push([module.id, "@media only screen and (max-width: 400px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n.info-card {\n  margin-top: 3.5%;\n}\n\n.info-title {\n  color: gray;\n  font-weight: 300;\n}\n\n.collection .collection-item.avatar {\n  min-height: 4em;\n}\n\n.collection .collection-item.avatar i.circle {\n    background-color: #3F7AFD;\n}\n\n/*.button-container {\n  text-align: center;\n}*/\n\n.button-container a {\n  margin-top: -11%;\n}\n", ""]);
 
 	// exports
 
@@ -30278,18 +30310,18 @@
 	    { className: 'row' },
 	    _react2.default.createElement(
 	      'button',
-	      { onClick: props.modalTrigger.bind(null, true), className: 'btn waves-effect waves-light edit-button yellow darken-3' },
+	      { onClick: props.modalTrigger.bind(null, true), className: 'btn btn-warning edit-button' },
 	      'Edit'
 	    ),
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'col s12 social-card-container' },
+	      { className: 'col-xs-12 social-card-container' },
 	      _react2.default.createElement(
 	        'a',
 	        { href: props.social.youtube ? props.social.youtube.url : null, target: 'blank' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'youtube-card col s4 m4 l3 waves-effect waves-light' },
+	          { className: 'youtube-card col-xs-4 col-md-4 col-lg-3' },
 	          _react2.default.createElement('img', { src: 'public/social-media-icons/youtube-logo.svg', alt: 'youtube icon' }),
 	          _react2.default.createElement(
 	            'h5',
@@ -30303,7 +30335,7 @@
 	        { href: props.social.facenook ? props.social.facenook.url : null, target: 'blank' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'facebook-card col s4 m4 l3 waves-effect waves-light' },
+	          { className: 'facebook-card col-xs-4 col-md-4 col-lg-3' },
 	          _react2.default.createElement('img', { src: 'public/social-media-icons/facebook-letter-logo.svg', alt: 'facebook icon' }),
 	          _react2.default.createElement(
 	            'h5',
@@ -30317,7 +30349,7 @@
 	        { href: props.social.vine ? props.social.vine.url : null, target: 'blank' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'vine-card col s4 m4 l3 waves-effect waves-light' },
+	          { className: 'vine-card col-xs-4 col-md-4 col-lg-3' },
 	          _react2.default.createElement('img', { src: 'public/social-media-icons/vine-logo.svg', alt: 'vine icon' }),
 	          _react2.default.createElement(
 	            'h5',
@@ -30331,7 +30363,7 @@
 	        { href: props.social.instagram ? props.social.instagram.url : null, target: 'blank' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'instagram-card col s4 m4 l3 waves-effect waves-light' },
+	          { className: 'instagram-card col-xs-4 col-md-4 col-lg-3' },
 	          _react2.default.createElement('img', { src: 'public/social-media-icons/instagram-social-network-logo-of-photo-camera.svg', alt: 'instagram icon' }),
 	          _react2.default.createElement(
 	            'h5',
@@ -30345,7 +30377,7 @@
 	        { href: props.social.twitter ? props.social.twitter.url : null, target: 'blank' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'twitter-card col s4 m4 l3 waves-effect waves-light' },
+	          { className: 'twitter-card col-xs-4 col-md-4 col-lg-3' },
 	          _react2.default.createElement('img', { src: 'public/social-media-icons/twitter-logo.svg', alt: 'twitter icon' }),
 	          _react2.default.createElement(
 	            'h5',
@@ -30438,8 +30470,15 @@
 	    data: object.isRequired,
 	    modalTrigger: func.isRequired
 	  },
+	  _map: function _map(obj, cb) {
+	    var result = [];
+	    for (var key in obj) {
+	      result.push(cb(obj[key], key));
+	    }
+	    return result;
+	  },
 	  render: function render() {
-	    console.log('from the modal', this.refs);
+	    console.log('from the modal', this);
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'row' },
@@ -30448,10 +30487,10 @@
 	        { className: 'col s8 m5 l8' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'card-panel modal' },
+	          { className: 'modal' },
 	          _react2.default.createElement(
 	            'div',
-	            { style: { textAlign: 'center' } },
+	            { style: { textAlign: 'center' }, className: '' },
 	            _react2.default.createElement(
 	              'h5',
 	              { className: 'social-reach' },
@@ -30459,46 +30498,48 @@
 	            )
 	          ),
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement(
-	              'h6',
-	              { className: 'social-title' },
-	              'YouTube'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'input-field col s8 push-s2 pull-s2' },
-	              _react2.default.createElement('input', { ref: 'youtubeUrl', value: this.props.data.social_reach.youtube.url, id: 'Link', type: 'text', className: 'validate' }),
-	              _react2.default.createElement(
-	                'label',
-	                { className: 'active', htmlFor: 'link' },
-	                'Link'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'input-field col s8 push-s2 pull-s2' },
-	              _react2.default.createElement('input', { ref: 'youtubeFollowers', value: this.props.data.social_reach.youtube.number, id: 'followers', type: 'text', className: 'validate' }),
-	              _react2.default.createElement(
-	                'label',
-	                { className: 'active', htmlFor: 'followers' },
-	                ' Followers'
-	              )
-	            )
+	            'form',
+	            null,
+	            this._map(this.props.data.social_reach, function (item, prop) {
+	              return _react2.default.createElement(
+	                'div',
+	                { key: Math.random() },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'form-group' },
+	                  _react2.default.createElement(
+	                    'label',
+	                    { 'for': prop + 'url' },
+	                    prop,
+	                    ' url'
+	                  ),
+	                  _react2.default.createElement('input', { ref: prop + 'Url', type: 'text', className: 'form-control col-xs-5', id: prop + 'url', value: item === null ? '' : item.number })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'form-group' },
+	                  _react2.default.createElement(
+	                    'label',
+	                    { 'for': prop + 'followers' },
+	                    prop,
+	                    ' followers'
+	                  ),
+	                  _react2.default.createElement('input', { ref: prop + 'Followers', type: 'text', className: 'form-control col-xs-8', id: prop + 'followers', value: item === null ? '' : item.url })
+	                )
+	              );
+	            })
 	          ),
-	          _react2.default.createElement('div', { className: 'divider' }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'buttons-container' },
 	            _react2.default.createElement(
 	              'span',
-	              { onClick: this.props.modalTrigger.bind(null, false), className: 'btn waves-effect waves-light red cancel-button' },
+	              { onClick: this.props.modalTrigger.bind(null, false), className: 'btn btn-danger cancel-button' },
 	              'cancel'
 	            ),
 	            _react2.default.createElement(
 	              'span',
-	              { className: 'btn waves-effect waves-light blue accent-3' },
+	              { className: 'btn btn-primary submit-button' },
 	              'submit'
 	            )
 	          )
@@ -30509,6 +30550,22 @@
 	});
 
 	exports.default = Modal;
+
+	{/*<div className='row'>
+	  <div class="form-group">
+	  <label for="exampleInputEmail1">Email address</label>
+	  <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email" />
+	  </div>
+	  <h6 className='social-title'>YouTube</h6>
+	  <div className='input-field col s8 push-s2 pull-s2'>
+	  <input ref={'youtubeUrl'} value={this.props.data.social_reach.youtube.url} id='Link' type='text' className='validate' />
+	  <label className='active' htmlFor='link'>Link</label>
+	  </div>
+	  <div className='input-field col s8 push-s2 pull-s2'>
+	  <input ref={'youtubeFollowers'} value={this.props.data.social_reach.youtube.number} id='followers' type='text' className='validate' />
+	  <label className='active' htmlFor='followers'> Followers</label>
+	  </div>
+	  </div>*/}
 
 /***/ },
 /* 296 */
@@ -30545,7 +30602,7 @@
 
 
 	// module
-	exports.push([module.id, ".cancel-button {\n  margin-right: 5px;\n}\n\n.social-reach {\n  margin-top: 3em;\n}\n\n.social-title {\n  margin-top: 3em;\n}\n\n.divider {\n  margin-left: 10%;\n  margin-right: 10%;\n}\n\n.buttons-container {\n  margin-bottom: 8%;\n}\n\n.modal {\n  height: 20em;\n  text-align: center;\n  z-index: 1000;\n  position: fixed;\n  display: inline-block;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  margin: auto;\n}\n", ""]);
+	exports.push([module.id, ".cancel-button {\n  margin-right: 5px;\n  margin-top: 5px;\n}\n\n.submit-button {\n  margin-top: 5px;\n}\n\n.social-reach {\n  margin-top: 3em;\n}\n\n.social-title {\n  margin-top: 3em;\n}\n\n.divider {\n  margin-left: 10%;\n  margin-right: 10%;\n}\n\n.buttons-container {\n  margin-bottom: 8%;\n  margin-left: 5%;\n}\n\n.modal {\n  height: 30em;\n  width: 40em;\n  z-index: 1000;\n  position: fixed;\n  display: inline-block;\n  top: 0;\n  bottom: 0;\n  background-color: white;\n  left: 0;\n  right: 0;\n  margin: auto;\n  border-radius: 3px;\n  box-shadow: 0 1px 1px rgba(0,0,0,.4);\n  overflow-y: scroll;\n}\n\n.form-group {\n  margin-left: 5%;\n  margin-right: 5%;\n  margin-bottom: 5px;\n}\n\n.form-control {\n  margin-bottom: 10px;\n}\n", ""]);
 
 	// exports
 
