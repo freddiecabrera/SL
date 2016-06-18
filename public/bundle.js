@@ -28480,9 +28480,6 @@
 	      return 'blue';
 	    })) : null;
 	  },
-	  log: function log(yee) {
-	    console.log(yee);
-	  },
 	  render: function render() {
 	    var _this = this;
 
@@ -28569,11 +28566,11 @@
 	                    data.earnings.map(function (item, index) {
 	                      return _react2.default.createElement(
 	                        'li',
-	                        { onClick: _this.log.bind(null, index), key: index },
+	                        { onClick: _this.props.changeMonth.bind(null, index + 1), key: index + 1 },
 	                        _react2.default.createElement(
 	                          'a',
 	                          null,
-	                          index
+	                          index + 1
 	                        )
 	                      );
 	                    })

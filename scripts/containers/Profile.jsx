@@ -70,9 +70,6 @@ const Profile = React.createClass({
     profile ? createChart(this.refs.gender, Object.keys(profile.gender), 'Genders', objToArray(profile.gender), ['green', 'red']) : null
     data ? createChart(this.refs.earnings, data.map(item => item.month), 'Earnings', data.map(item => item.earnings), data.map(item => 'blue')) : null
   },
-  log (yee) {
-    console.log(yee);
-  },
   render () {
     console.log('from the Profile', this)
     const data = this.props.profile
@@ -87,7 +84,6 @@ const Profile = React.createClass({
               {this.props.details ? <SocialReach modalTrigger={this.props.modalTrigger} social={data.social_reach} /> : null}
             </div>
           </div>
-
           {this.props.details ? <div className='col-xs12 row'>
             <div className='col-xs-12 col-md-12 col-lg-6'>
               <div className='panel panel-default'>
@@ -114,7 +110,7 @@ const Profile = React.createClass({
                       Months <span className="caret"></span>
                     </button>
                     <ul className="dropdown-menu">
-                      {data.earnings.map((item, index) => <li onClick={this.log.bind(null, index)} key={index}><a>{index}</a></li> )}
+                      {data.earnings.map((item, index) => <li onClick={this.props.changeMonth.bind(null, index + 1)} key={index + 1}><a>{index + 1}</a></li> )}
                     </ul>
                   </div>
                   <canvas ref={'earnings'} height='400' width='400'></canvas>
