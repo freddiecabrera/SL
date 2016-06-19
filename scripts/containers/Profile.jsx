@@ -6,7 +6,7 @@ import ProfileCard from '../components/ProfileCard'
 import InfoCard from '../components/InfoCard'
 import SocialReach from '../components/SocialReach'
 import Modal from '../components/Modal'
-const { object, func, bool, string } = React.PropTypes
+const { object, func, bool, string, number } = React.PropTypes
 import Chart from 'chart.js'
 import styles from '../../public/styles/Profile.css'
 
@@ -23,9 +23,6 @@ const createChart = (chart, labels, label, data, color) => (
       }]
     },
     options: {
-      tooltips: {
-        enabled: false
-      },
       scales: {
         yAxes: [{
           ticks: {
@@ -39,14 +36,14 @@ const createChart = (chart, labels, label, data, color) => (
 
 const Profile = React.createClass({
   propTypes: {
-    profile: object.isRequired,
+    profile: object,
     getProfile: func.isRequired,
     showDetails: func.isRequired,
-    details: bool.isRequired,
-    month: string.isRequired,
-    modalTrigger: func.isRequired,
+    details: bool,
+    month: number,
+    modalTrigger: func,
     changeMonth: func.isRequired,
-    modalOn: func.isRequired,
+    modalOn: bool,
     updateSocial: func.isRequired
 
   },
@@ -70,8 +67,11 @@ const Profile = React.createClass({
     profile ? createChart(this.refs.gender, Object.keys(profile.gender), 'Genders', objToArray(profile.gender), ['green', 'red']) : null
     data ? createChart(this.refs.earnings, data.map(item => item.month), 'Earnings', data.map(item => item.earnings), data.map(item => 'blue')) : null
   },
+  log (what) {
+    console.log('logged', what)
+  },
   render () {
-    console.log('from the Profile', this)
+    console.log('from the Profile', this.props)
     const data = this.props.profile
     return (
       <div className='container'>

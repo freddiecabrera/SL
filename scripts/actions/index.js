@@ -23,11 +23,11 @@ export const showDetails = bool => ({
   show: bool
 })
 
-export const changeMonth = month => ({
+export const changeMonth = month => ({       //this is the change month alg
   type: GET_MONTHS,
   month
 })
-
+/* jhdfhsdakfklds  */
 export const modalTrigger = (bool) => ({
   type: MODAL_TRIGGER,
   modalOn: bool
@@ -37,7 +37,7 @@ export const updateSocial = (data) => {
   return function (dispatch) {
     axios.post(PROFILE_URL, data)
       .then(respone => {
-        console.log(response);
+        console.log('saved Successfully');
       })
       .catch(error => {
         console.log(error);

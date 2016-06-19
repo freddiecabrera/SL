@@ -28407,6 +28407,7 @@
 	var func = _React$PropTypes.func;
 	var bool = _React$PropTypes.bool;
 	var string = _React$PropTypes.string;
+	var number = _React$PropTypes.number;
 
 
 	var createChart = function createChart(chart, labels, label, data, color) {
@@ -28422,9 +28423,6 @@
 	      }]
 	    },
 	    options: {
-	      tooltips: {
-	        enabled: false
-	      },
 	      scales: {
 	        yAxes: [{
 	          ticks: {
@@ -28440,14 +28438,14 @@
 	  displayName: 'Profile',
 
 	  propTypes: {
-	    profile: object.isRequired,
+	    profile: object,
 	    getProfile: func.isRequired,
 	    showDetails: func.isRequired,
-	    details: bool.isRequired,
-	    month: string.isRequired,
-	    modalTrigger: func.isRequired,
+	    details: bool,
+	    month: number,
+	    modalTrigger: func,
 	    changeMonth: func.isRequired,
-	    modalOn: func.isRequired,
+	    modalOn: bool,
 	    updateSocial: func.isRequired
 
 	  },
@@ -28480,10 +28478,13 @@
 	      return 'blue';
 	    })) : null;
 	  },
+	  log: function log(what) {
+	    console.log('logged', what);
+	  },
 	  render: function render() {
 	    var _this = this;
 
-	    console.log('from the Profile', this);
+	    console.log('from the Profile', this.props);
 	    var data = this.props.profile;
 	    return _react2.default.createElement(
 	      'div',
@@ -28640,12 +28641,12 @@
 	};
 
 	var changeMonth = exports.changeMonth = function changeMonth(month) {
-	  return {
+	  return { //this is the change month alg
 	    type: _types.GET_MONTHS,
 	    month: month
 	  };
 	};
-
+	/* jhdfhsdakfklds  */
 	var modalTrigger = exports.modalTrigger = function modalTrigger(bool) {
 	  return {
 	    type: _types.MODAL_TRIGGER,
@@ -28656,7 +28657,7 @@
 	var updateSocial = exports.updateSocial = function updateSocial(data) {
 	  return function (dispatch) {
 	    _axios2.default.post(PROFILE_URL, data).then(function (respone) {
-	      console.log(response);
+	      console.log('saved Successfully');
 	    }).catch(function (error) {
 	      console.log(error);
 	    });
@@ -30016,6 +30017,9 @@
 
 	exports.default = ProfileCard;
 
+
+	{}
+
 /***/ },
 /* 287 */
 /***/ function(module, exports, __webpack_require__) {
@@ -30263,7 +30267,7 @@
 
 
 	// module
-	exports.push([module.id, "@media only screen and (max-width: 400px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n.info-card {\n  margin-top: 3.5%;\n}\n\n.info-title {\n  color: gray;\n  font-weight: 300;\n}\n\n.collection .collection-item.avatar {\n  min-height: 4em;\n}\n\n.collection .collection-item.avatar i.circle {\n    background-color: #3F7AFD;\n}\n\n/*.button-container {\n  text-align: center;\n}*/\n\n.button-container a {\n  margin-top: -11%;\n}\n", ""]);
+	exports.push([module.id, "@media only screen and (max-width: 400px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n.info-card {\n  margin-top: 3.5%;\n}\n\n.info-title {\n  color: gray;\n  font-weight: 300;\n}\n\n.collection .collection-item.avatar {\n  min-height: 4em;\n}\n\n.collection .collection-item.avatar i.circle {\n    background-color: #3F7AFD;\n}\n\n.button-container a {\n  margin-top: -11%;\n}\n\na:focus, a:hover {\n    color: #23527c;\n    text-decoration: none;\n    cursor: pointer;\n}\n", ""]);
 
 	// exports
 
@@ -30463,9 +30467,10 @@
 	  displayName: 'Modal',
 
 	  propTypes: {
-	    social_reach: object.isRequired,
+	    social_reach: object,
 	    data: object.isRequired,
-	    modalTrigger: func.isRequired
+	    modalTrigger: func.isRequired,
+	    updateSocial: func
 	  },
 	  _map: function _map(obj, cb) {
 	    var result = [];
@@ -30474,8 +30479,21 @@
 	    }
 	    return result;
 	  },
+	  log: function log(som) {
+	    console.log(som);
+	  },
+	  handleFormSubmit: function handleFormSubmit(e) {
+	    e.preventDefault();
+	    var result = this.refs;
+	    for (var key in this.refs) {
+	      this.refs[key] = this.refs[key].value;
+	    }
+	    this.props.updateSocial('hello');
+	    console.log(result);
+	    this.props.modalTrigger(false);
+	  },
 	  render: function render() {
-	    console.log('from the modal', this);
+	    console.log('from the modal', this.refs);
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'row' },
@@ -30496,7 +30514,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'form',
-	            null,
+	            { onSubmit: this.handleFormSubmit },
 	            this._map(this.props.data.social_reach, function (item, prop) {
 	              return _react2.default.createElement(
 	                'div',
@@ -30510,7 +30528,7 @@
 	                    prop,
 	                    ' url'
 	                  ),
-	                  _react2.default.createElement('input', { ref: prop + 'Url', type: 'text', className: 'form-control col-xs-5', id: prop + 'url', value: item === null ? '' : item.number })
+	                  _react2.default.createElement('input', { ref: prop + 'Url', type: 'text', className: 'form-control col-xs-5', id: prop + 'url', defaultValue: item === null ? '' : item.url })
 	                ),
 	                _react2.default.createElement(
 	                  'div',
@@ -30521,23 +30539,23 @@
 	                    prop,
 	                    ' followers'
 	                  ),
-	                  _react2.default.createElement('input', { ref: prop + 'Followers', type: 'text', className: 'form-control col-xs-8', id: prop + 'followers', value: item === null ? '' : item.url })
+	                  _react2.default.createElement('input', { ref: prop + 'Followers', type: 'text', className: 'form-control col-xs-8', id: prop + 'followers', defaultValue: item === null ? '' : item.number })
 	                )
 	              );
-	            })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'buttons-container' },
+	            }),
 	            _react2.default.createElement(
-	              'span',
-	              { onClick: this.props.modalTrigger.bind(null, false), className: 'btn btn-danger cancel-button' },
-	              'cancel'
-	            ),
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'btn btn-primary submit-button' },
-	              'submit'
+	              'div',
+	              { className: 'buttons-container' },
+	              _react2.default.createElement(
+	                'span',
+	                { onClick: this.props.modalTrigger.bind(null, false), className: 'btn btn-danger cancel-button' },
+	                'cancel'
+	              ),
+	              _react2.default.createElement(
+	                'button',
+	                { type: 'submit', className: 'btn btn-primary submit-button' },
+	                'submit'
+	              )
 	            )
 	          )
 	        )

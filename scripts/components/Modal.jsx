@@ -4,9 +4,10 @@ const { func, bool, object } = React.PropTypes
 
 const Modal = React.createClass({
   propTypes: {
-    social_reach: object.isRequired,
+    social_reach: object,
     data: object.isRequired,
-    modalTrigger: func.isRequired
+    modalTrigger: func.isRequired,
+    updateSocial: func
   },
   _map (obj, cb) {
     let result = []
@@ -15,8 +16,21 @@ const Modal = React.createClass({
     }
     return result
   },
+  log (som) {
+    console.log(som);
+  },
+  handleFormSubmit (e) {
+    e.preventDefault()
+    let result = this.refs
+    for(let key in this.refs) {
+      this.refs[key] = this.refs[key].value
+    }
+    this.props.updateSocial('hello')
+    console.log(result);
+    this.props.modalTrigger(false)
+  },
   render () {
-    console.log('from the modal', this);
+    console.log('from the modal', this.refs);
     return (
       <div className='row'>
         <div className='col s8 m5 l8'>
@@ -24,25 +38,24 @@ const Modal = React.createClass({
             <div style={{textAlign: 'center'}} className=''>
               <h5 className='social-reach'>Social Reach</h5>
             </div>
-            <form>
+            <form onSubmit={this.handleFormSubmit}>
               {this._map(this.props.data.social_reach, (item, prop) => (
                 <div key={Math.random()}>
                 <div className="form-group">
                   <label for={prop + 'url'}>{prop} url</label>
-                  <input ref={prop + 'Url'} type="text" className="form-control col-xs-5" id={prop + 'url'} value={item === null ? '' : item.number} />
+                  <input ref={prop + 'Url'} type="text" className="form-control col-xs-5" id={prop + 'url'} defaultValue={item === null ? '' : item.url} />
                 </div>
                 <div className="form-group">
                   <label for={prop + 'followers'}>{prop} followers</label>
-                  <input ref={prop + 'Followers'} type="text" className="form-control col-xs-8" id={prop + 'followers'} value={item === null ? '' : item.url} />
+                  <input ref={prop + 'Followers'} type="text" className="form-control col-xs-8" id={prop + 'followers'} defaultValue={item === null ? '' : item.number} />
                 </div>
                 </div>
               ))}
+              <div className='buttons-container'>
+                <span onClick={this.props.modalTrigger.bind(null, false)} className='btn btn-danger cancel-button'>cancel</span>
+                <button type='submit' className='btn btn-primary submit-button'>submit</button>
+              </div>
             </form>
-            <div className='buttons-container'>
-              <span onClick={this.props.modalTrigger.bind(null, false)} className='btn btn-danger cancel-button'>cancel</span>
-              <span className='btn btn-primary submit-button'>submit</span>
-            </div>
-
           </div>
         </div>
       </div>

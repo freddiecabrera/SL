@@ -35,3 +35,8 @@ ProfileCard.propTypes = {
 }
 
 export default ProfileCard
+
+
+{
+
+}
