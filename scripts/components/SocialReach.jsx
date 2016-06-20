@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '../../public/styles/SocialReach.css'
-const { object } = React.PropTypes
+const { object, func } = React.PropTypes
 
 const nFormatter = num => {
   if (num >= 1000000) {
@@ -51,7 +51,8 @@ const SocialReach = props => (
 )
 
 SocialReach.propTypes = {
-  social: object.isRequired
+  social: object.isRequired,
+  modalTrigger: func.isRequired
 }
 
 export default SocialReach

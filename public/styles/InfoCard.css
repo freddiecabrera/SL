@@ -14,6 +14,10 @@
   margin-top: 3.5%;
 }
 
+.info-card-container {
+  margin-left: 1%;
+}
+
 .info-title {
   color: gray;
   font-weight: 300;
@@ -29,6 +33,10 @@
 
 .button-container a {
   margin-top: -11%;
+}
+
+.material-icons {
+  color: #3F7AFD;
 }
 
 a:focus, a:hover {

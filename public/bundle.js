@@ -27852,7 +27852,6 @@
 	var SHOW_DETAILS = exports.SHOW_DETAILS = 'SHOW_DETAILS';
 	var GET_MONTHS = exports.GET_MONTHS = 'GET_MONTHS';
 	var MODAL_TRIGGER = exports.MODAL_TRIGGER = 'MODAL_TRIGGER';
-	var UPDATE_SOCIAL = exports.UPDATE_SOCIAL = 'UPDATE_SOCIAL';
 
 /***/ },
 /* 255 */
@@ -27877,8 +27876,6 @@
 	  var action = arguments[1];
 
 	  switch (action.type) {
-	    case _types.FETCHING:
-	      return _extends({}, state, { fetching: action.fetching });
 	    case _types.SHOW_DETAILS:
 	      return _extends({}, state, { show: action.show });
 	    case _types.MODAL_TRIGGER:
@@ -27968,12 +27965,12 @@
 	      { className: 'row' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'welcome-card col s8 push-s2 pull-s2 z-depth-1' },
+	        { className: 'welcome-card col-xs-8 col-xs-push-2 col-xs-pull-2' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col s12 row' },
-	          _react2.default.createElement('img', { className: 'col s5', src: 'https://d13yacurqjgara.cloudfront.net/users/60266/screenshots/2587173/caritas.gif' }),
-	          _react2.default.createElement('img', { className: 'video-camera col s5 push-s2', src: 'https://d13yacurqjgara.cloudfront.net/users/120724/screenshots/1031269/video-camera_1x.jpg' })
+	          { className: 'col-xs-12 row' },
+	          _react2.default.createElement('img', { className: 'col-xs-5 person', src: 'https://d13yacurqjgara.cloudfront.net/users/60266/screenshots/2587173/caritas.gif' }),
+	          _react2.default.createElement('img', { className: 'video-camera col-xs-5 col-xs-push-2', src: 'https://d13yacurqjgara.cloudfront.net/users/120724/screenshots/1031269/video-camera_1x.jpg' })
 	        ),
 	        _react2.default.createElement(
 	          'h5',
@@ -27987,13 +27984,8 @@
 	          { to: 'profile' },
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'btn waves-effect waves-light enter-button', type: 'submit', name: 'action' },
-	            'Enter',
-	            _react2.default.createElement(
-	              'i',
-	              { className: 'material-icons right' },
-	              'play_arrow'
-	            )
+	            { className: 'btn btn-primary enter-button', type: 'submit', name: 'action' },
+	            'Enter'
 	          )
 	        )
 	      )
@@ -28038,7 +28030,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  color: black;\n  background-color: #f2f2f4;\n}\n\nh5 {\n  font-weight: 100;\n}\n\n.enter-button {\n  background-color: #3F7AFD;\n  margin-left: 7%;\n\n}\n\n.enter-button:hover {\n  background-color: #2A66EB;\n}\n\n.logo-scale {\n  font-size: 25px;\n  font-weight: 500;\n  color: #3F7AFD;\n}\n\n.logo-lab {\n  color: #3F7AFD;\n  font-size: 25px;\n  font-weight: 300;\n}\n\n.logo-container {\n  top: 1%;\n  left: 5%;\n  padding-top: 1%;\n  position: fixed;\n}\n\n.welcome-card {\n  margin-top: 16%;\n  height: 27em;\n  background-color: white;\n  border-radius: 3px;\n}\n\n.card-text {\n  font-weight: 600;\n  font-size: 2em;\n  margin-top: 40%;\n  margin-left: 7%;\n}\n\n.video-camera {\n  height: 11em;\n  margin-top: 3%;\n}\n", ""]);
+	exports.push([module.id, "body {\n  color: black;\n  background-color: #f2f2f4;\n}\n\nh5 {\n  font-weight: 100;\n}\n\n.enter-button {\n  background-color: #3F7AFD;\n  margin-left: 7%;\n\n}\n\n.enter-button:hover {\n  background-color: #2A66EB;\n}\n\n.logo-scale {\n  font-size: 25px;\n  font-weight: 500;\n  color: #3F7AFD;\n}\n\n.logo-lab {\n  color: #3F7AFD;\n  font-size: 25px;\n  font-weight: 300;\n}\n\n.logo-container {\n  top: 1%;\n  left: 5%;\n  padding-top: 1%;\n  position: fixed;\n}\n\n.welcome-card {\n  margin-top: 16%;\n  height: 27em;\n  background-color: white;\n  border-radius: 3px;\n}\n\n.card-text {\n  font-weight: 600;\n  font-size: 2em;\n  margin-top: 30%;\n  margin-left: 7%;\n}\n\n.video-camera {\n  height: 15em;\n  margin-top: 3%;\n}\n\n@media only screen and (max-width: 400px) {\n  .video-camera {\n    height: 5em;\n  }\n\n  .person {\n    height: 4em;\n  }\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .person {\n    height: 9em;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -28406,7 +28398,6 @@
 	var object = _React$PropTypes.object;
 	var func = _React$PropTypes.func;
 	var bool = _React$PropTypes.bool;
-	var string = _React$PropTypes.string;
 	var number = _React$PropTypes.number;
 
 
@@ -28478,13 +28469,9 @@
 	      return 'blue';
 	    })) : null;
 	  },
-	  log: function log(what) {
-	    console.log('logged', what);
-	  },
 	  render: function render() {
 	    var _this = this;
 
-	    console.log('from the Profile', this.props);
 	    var data = this.props.profile;
 	    return _react2.default.createElement(
 	      'div',
@@ -28622,10 +28609,8 @@
 
 	var getProfile = exports.getProfile = function getProfile() {
 	  return function (dispatch) {
-	    dispatch({ type: _types.FETCHING, fetching: true });
 	    _axios2.default.get(PROFILE_URL).then(function (response) {
 	      var data = response.data;
-	      dispatch({ type: _types.FETCHING, fetching: false });
 	      return dispatch({ type: _types.FETCH_PROFILE, profile: data });
 	    }).catch(function (error) {
 	      console.log(error);
@@ -28641,12 +28626,12 @@
 	};
 
 	var changeMonth = exports.changeMonth = function changeMonth(month) {
-	  return { //this is the change month alg
+	  return {
 	    type: _types.GET_MONTHS,
 	    month: month
 	  };
 	};
-	/* jhdfhsdakfklds  */
+
 	var modalTrigger = exports.modalTrigger = function modalTrigger(bool) {
 	  return {
 	    type: _types.MODAL_TRIGGER,
@@ -29995,7 +29980,6 @@
 	            )
 	          )
 	        ),
-	        _react2.default.createElement('div', { role: 'separator', className: 'divider' }),
 	        _react2.default.createElement(
 	          'h6',
 	          { className: 'channel-id' },
@@ -30016,9 +30000,6 @@
 	};
 
 	exports.default = ProfileCard;
-
-
-	{}
 
 /***/ },
 /* 287 */
@@ -30055,7 +30036,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.profile-card {\n  margin-top: 9%;\n  height: 23em;\n}\n\n.info-card {\n  margin-top: 2.6%;\n}\n\n.channel-name {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.creator-stats {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.linked-badge {\n  margin: 1em;\n  font-weight: 300;\n  font-size: 0.8rem;\n  color: #fff;\n  background-color: #69f0ae;\n  border: 6px solid #69f0ae;\n  border-radius: 2px;\n}\n\n.channel-id {\n  font-weight: 300;\n}\n\n.divider {\n  margin-bottom: 7%;\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .divider {\n      margin-bottom: 2.3%;\n  }\n}\n\n@media only screen and (max-width: 400px) {\n  .divider {\n      margin-bottom: 5.4%;\n  }\n}\n", ""]);
+	exports.push([module.id, "\n.profile-card {\n  margin-top: 9%;\n  height: 20em;\n}\n\n.info-card {\n  margin-top: 2.6%;\n}\n\n.channel-name {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.creator-stats {\n  color: #3F7AFD;\n  font-weight: 300;\n}\n\n.linked-badge {\n  margin: 1em;\n  font-weight: 300;\n  font-size: 0.8rem;\n  color: #fff;\n  background-color: #69f0ae;\n  border: 6px solid #69f0ae;\n  border-radius: 2px;\n}\n\n.channel-id {\n  font-weight: 300;\n  margin-top: 6%;\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .channel-id {\n      margin-top: 4%;\n  }\n}\n\n@media only screen and (max-width: 400px) {\n  .channel-id {\n      margin-top: 9%;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -30105,14 +30086,18 @@
 	            'network_check'
 	          ),
 	          _react2.default.createElement(
-	            'span',
-	            { className: 'title' },
-	            'Network:'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            props.data.network
+	            'div',
+	            { className: 'info-card-container' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'title' },
+	              'Network:'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              props.data.network
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -30124,14 +30109,18 @@
 	            'account_circle'
 	          ),
 	          _react2.default.createElement(
-	            'span',
-	            { className: 'title' },
-	            'Owner:'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            props.data.owner
+	            'div',
+	            { className: 'info-card-container' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'title' },
+	              'Owner:'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              props.data.owner
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -30143,14 +30132,18 @@
 	            'attach_money'
 	          ),
 	          _react2.default.createElement(
-	            'span',
-	            { className: 'title' },
-	            'Commission:'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            props.data.commission
+	            'div',
+	            { className: 'info-card-container' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'title' },
+	              'Commission:'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              props.data.commission
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -30162,14 +30155,18 @@
 	            'date_range'
 	          ),
 	          _react2.default.createElement(
-	            'span',
-	            { className: 'title' },
-	            'Joined:'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            props.data.joined
+	            'div',
+	            { className: 'info-card-container' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'title' },
+	              'Joined:'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              props.data.joined
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -30181,14 +30178,18 @@
 	            'storage'
 	          ),
 	          _react2.default.createElement(
-	            'span',
-	            { className: 'title' },
-	            'Category:'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            props.data.category
+	            'div',
+	            { className: 'info-card-container' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'title' },
+	              'Category:'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              props.data.category
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -30200,14 +30201,18 @@
 	            'location_on'
 	          ),
 	          _react2.default.createElement(
-	            'span',
-	            { className: 'title' },
-	            'Country:'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            props.data.country_id
+	            'div',
+	            { className: 'info-card-container' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'title' },
+	              'Country:'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              props.data.country_id
+	            )
 	          )
 	        )
 	      ),
@@ -30267,7 +30272,7 @@
 
 
 	// module
-	exports.push([module.id, "@media only screen and (max-width: 400px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n.info-card {\n  margin-top: 3.5%;\n}\n\n.info-title {\n  color: gray;\n  font-weight: 300;\n}\n\n.collection .collection-item.avatar {\n  min-height: 4em;\n}\n\n.collection .collection-item.avatar i.circle {\n    background-color: #3F7AFD;\n}\n\n.button-container a {\n  margin-top: -11%;\n}\n\na:focus, a:hover {\n    color: #23527c;\n    text-decoration: none;\n    cursor: pointer;\n}\n", ""]);
+	exports.push([module.id, "@media only screen and (max-width: 400px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .info-card {\n    margin-top: -4%;\n  }\n}\n\n.info-card {\n  margin-top: 3.5%;\n}\n\n.info-card-container {\n  margin-left: 1%;\n}\n\n.info-title {\n  color: gray;\n  font-weight: 300;\n}\n\n.collection .collection-item.avatar {\n  min-height: 4em;\n}\n\n.collection .collection-item.avatar i.circle {\n    background-color: #3F7AFD;\n}\n\n.button-container a {\n  margin-top: -11%;\n}\n\n.material-icons {\n  color: #3F7AFD;\n}\n\na:focus, a:hover {\n    color: #23527c;\n    text-decoration: none;\n    cursor: pointer;\n}\n", ""]);
 
 	// exports
 
@@ -30292,7 +30297,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var object = _react2.default.PropTypes.object;
+	var _React$PropTypes = _react2.default.PropTypes;
+	var object = _React$PropTypes.object;
+	var func = _React$PropTypes.func;
 
 
 	var nFormatter = function nFormatter(num) {
@@ -30392,7 +30399,8 @@
 	};
 
 	SocialReach.propTypes = {
-	  social: object.isRequired
+	  social: object.isRequired,
+	  modalTrigger: func.isRequired
 	};
 
 	exports.default = SocialReach;
@@ -30432,7 +30440,7 @@
 
 
 	// module
-	exports.push([module.id, ".social-card-container {\n  text-align: center;\n}\n\n.social-card-container img {\n  margin-top: 9%;\n  height: 2em;\n}\n\n.social-card-container h5 {\n  font-weight: 300;\n}\n\n.youtube-card {\n  background-color: #bb0000;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.facebook-card {\n  background-color: #3b5998;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.vine-card {\n  background-color: #00bf8f;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.instagram-card {\n  background-color: #125688;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.twitter-card {\n  background-color: #55acee;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.edit-button {\n  margin-left: 1.4%;\n}\n\n\n@media only screen and (max-width: 400px) {\n  .social-card-container img {\n    margin-top: 25%;\n  }\n\n  .edit-button {\n    margin-left: 3.4%;\n  }\n}\n", ""]);
+	exports.push([module.id, ".social-card-container {\n  text-align: center;\n}\n\n.social-card-container img {\n  margin-top: 14%;\n  height: 2em;\n}\n\n.social-card-container h5 {\n  font-weight: 300;\n}\n\n.youtube-card {\n  background-color: #bb0000;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.facebook-card {\n  background-color: #3b5998;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.vine-card {\n  background-color: #00bf8f;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.instagram-card {\n  background-color: #125688;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.twitter-card {\n  background-color: #55acee;\n  color: white;\n  height: 9em;\n  border: 2px solid #F2F2F4;\n}\n\n.edit-button {\n  margin-left: 1.4%;\n}\n\n\n@media only screen and (max-width: 400px) {\n  .social-card-container img {\n    margin-top: 40%;\n  }\n\n  .edit-button {\n    margin-left: 4%;\n  }\n}\n\n@media screen and (min-width: 601px) and (max-width: 900px) {\n  .edit-button {\n    margin-left: 2.7%;\n  }\n\n  .social-card-container img {\n    margin-top: 20%;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -30459,7 +30467,6 @@
 
 	var _React$PropTypes = _react2.default.PropTypes;
 	var func = _React$PropTypes.func;
-	var bool = _React$PropTypes.bool;
 	var object = _React$PropTypes.object;
 
 
@@ -30479,21 +30486,16 @@
 	    }
 	    return result;
 	  },
-	  log: function log(som) {
-	    console.log(som);
-	  },
 	  handleFormSubmit: function handleFormSubmit(e) {
 	    e.preventDefault();
 	    var result = this.refs;
 	    for (var key in this.refs) {
 	      this.refs[key] = this.refs[key].value;
 	    }
-	    this.props.updateSocial('hello');
-	    console.log(result);
+	    this.props.updateSocial(result);
 	    this.props.modalTrigger(false);
 	  },
 	  render: function render() {
-	    console.log('from the modal', this.refs);
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'row' },
@@ -30524,7 +30526,7 @@
 	                  { className: 'form-group' },
 	                  _react2.default.createElement(
 	                    'label',
-	                    { 'for': prop + 'url' },
+	                    { htmlFor: prop + 'url' },
 	                    prop,
 	                    ' url'
 	                  ),
@@ -30535,7 +30537,7 @@
 	                  { className: 'form-group' },
 	                  _react2.default.createElement(
 	                    'label',
-	                    { 'for': prop + 'followers' },
+	                    { htmlFor: prop + 'followers' },
 	                    prop,
 	                    ' followers'
 	                  ),
@@ -30565,22 +30567,6 @@
 	});
 
 	exports.default = Modal;
-
-	{/*<div className='row'>
-	  <div class="form-group">
-	  <label for="exampleInputEmail1">Email address</label>
-	  <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email" />
-	  </div>
-	  <h6 className='social-title'>YouTube</h6>
-	  <div className='input-field col s8 push-s2 pull-s2'>
-	  <input ref={'youtubeUrl'} value={this.props.data.social_reach.youtube.url} id='Link' type='text' className='validate' />
-	  <label className='active' htmlFor='link'>Link</label>
-	  </div>
-	  <div className='input-field col s8 push-s2 pull-s2'>
-	  <input ref={'youtubeFollowers'} value={this.props.data.social_reach.youtube.number} id='followers' type='text' className='validate' />
-	  <label className='active' htmlFor='followers'> Followers</label>
-	  </div>
-	  </div>*/}
 
 /***/ },
 /* 296 */
@@ -51060,7 +51046,7 @@
 
 
 	// module
-	exports.push([module.id, ".graph-chips {\n  font-weight: 300;\n  border-radius: 2em;\n  margin-right: 1em;\n  font-size: 10px;\n}\n\n.title-container {\n  text-align: center;\n}\n\n.title-container h6 {\n  text-align: center;\n}\n\n@media only screen and (max-width: 441px) {\n  .graph-chips:nth-child(4) {\n    margin-top: 5px;\n  }\n}\n", ""]);
+	exports.push([module.id, ".graph-chips {\n  font-weight: 300;\n  border-radius: 2em;\n  margin-right: 1em;\n  font-size: 10px;\n}\n\n.title-container {\n  text-align: center;\n}\n\n.title-container h6 {\n  text-align: center;\n}\n\n.dropdown-menu {\n    height: 10em;\n    overflow-y: scroll;\n}\n\n@media only screen and (max-width: 441px) {\n  .graph-chips:nth-child(4) {\n    margin-top: 5px;\n  }\n}\n", ""]);
 
 	// exports
 

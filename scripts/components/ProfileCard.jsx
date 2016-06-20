@@ -23,8 +23,7 @@ const ProfileCard = props => (
           <h5>{nFormatter(props.data.views)} <span className='creator-stats'>Views</span></h5>
           <h5>{nFormatter(props.data.video_count)} <span className='creator-stats'>Videos</span></h5>
         </div>
-        <div role='separator' className='divider'></div>
-          <h6 className='channel-id'><span className='linked-badge'>Linked</span>{props.data.channelid}</h6>
+        <h6 className='channel-id'><span className='linked-badge'>Linked</span>{props.data.channelid}</h6>
       </div>
     </div>
   </div>
@@ -35,8 +34,3 @@ ProfileCard.propTypes = {
 }
 
 export default ProfileCard
-
-
-{
-
-}

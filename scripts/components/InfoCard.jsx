@@ -8,39 +8,49 @@ const InfoCard = props => (
       <ul className='list-group'>
         <li className='list-group-item avatar'>
           <i className='material-icons circle'>network_check</i>
-          <span className='title'>Network:</span>
-          <p>{props.data.network}</p>
+          <div className='info-card-container'>
+            <span className='title'>Network:</span>
+            <p>{props.data.network}</p>
+          </div>
         </li>
         <li className='list-group-item avatar'>
           <i className='material-icons circle'>account_circle</i>
-          <span className='title'>Owner:</span>
-          <p>{props.data.owner}</p>
+          <div className='info-card-container'>
+            <span className='title'>Owner:</span>
+            <p>{props.data.owner}</p>
+          </div>
         </li>
         <li className='list-group-item avatar'>
           <i className='material-icons circle'>attach_money</i>
-          <span className='title'>Commission:</span>
-          <p>{props.data.commission}</p>
+          <div className='info-card-container'>
+            <span className='title'>Commission:</span>
+            <p>{props.data.commission}</p>
+          </div>
         </li>
         <li className='list-group-item avatar'>
           <i className='material-icons circle'>date_range</i>
-          <span className='title'>Joined:</span>
-          <p>{props.data.joined}</p>
+          <div className='info-card-container'>
+            <span className='title'>Joined:</span>
+            <p>{props.data.joined}</p>
+          </div>
         </li>
         <li className='list-group-item avatar'>
           <i className='material-icons circle'>storage</i>
-          <span className='title'>Category:</span>
-          <p>{props.data.category}</p>
+          <div className='info-card-container'>
+            <span className='title'>Category:</span>
+            <p>{props.data.category}</p>
+          </div>
         </li>
         <li className='list-group-item avatar'>
           <i className='material-icons circle'>location_on</i>
-          <span className='title'>Country:</span>
-          <p>{props.data.country_id}</p>
+          <div className='info-card-container'>
+            <span className='title'>Country:</span>
+            <p>{props.data.country_id}</p>
+          </div>
         </li>
       </ul>
       <div className='button-container'>
-      <a onClick={props.showDetails.bind(null, !props.details)}>
-      Details
-      </a>
+        <a onClick={props.showDetails.bind(null, !props.details)}>Details</a>
       </div>
     </div>
   </div>
