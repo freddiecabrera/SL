@@ -28605,7 +28605,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var PROFILE_URL = 'http://www.scalelab.com/test/channel.json';
+	var PROFILE_URL = 'http://scalelab.getsandbox.com/youtubeprofile';
 
 	var getProfile = exports.getProfile = function getProfile() {
 	  return function (dispatch) {

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { FETCH_PROFILE, SHOW_DETAILS, GET_MONTHS, MODAL_TRIGGER } from './types'
 
-const PROFILE_URL = 'http://www.scalelab.com/test/channel.json'
+const PROFILE_URL = 'http://scalelab.getsandbox.com/youtubeprofile'
 
 export const getProfile = () => {
   return function (dispatch) {
